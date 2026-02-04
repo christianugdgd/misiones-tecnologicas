@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aprende Tecnología Fácil</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+margin:0;
+background:#f1f5f9;
+text-align:center;
+}
+
+header{
+background:#1d4ed8;
+color:white;
+padding:22px;
+font-size:28px;
+}
+
+.menu{
+padding:15px;
+}
+
+button{
+display:block;
+width:90%;
+max-width:420px;
+margin:12px auto;
+padding:18px;
+font-size:22px;
+border:none;
+border-radius:14px;
+background:#2563eb;
+color:white;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:15px auto;
+max-width:520px;
+border-radius:16px;
+box-shadow:0 0 12px rgba(0,0,0,0.1);
+font-size:20px;
+}
+
+.progress{
+width:80%;
+height:26px;
+background:#ddd;
+margin:20px auto;
+border-radius:20px;
+overflow:hidden;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:#22c55e;
+}
+
+h2{font-size:26px;}
+</style>
+</head>
+
+<body>
+
+<header>
+📱 Aprende Tecnología Fácil
+</header>
+
+<div class="card">
+<h2>Nivel Principiante 🟢</h2>
+<p>Completa misiones para avanzar de nivel.</p>
+</div>
+
+<div class="progress">
+<div id="barra" class="bar"></div>
+</div>
+
+<div class="menu">
+<button onclick="abrir('m1')">📞 Hacer una llamada</button>
+<button onclick="abrir('m2')">💬 Enviar mensaje WhatsApp</button>
+<button onclick="abrir('m3')">🎤 Enviar audio</button>
+<button onclick="abrir('m4')">📷 Tomar una foto</button>
+<button onclick="abrir('m5')">🔎 Buscar en Google</button>
+</div>
+
+<div id="m1" class="card" style="display:none;">
+<h3>📞 Hacer llamada</h3>
+<p>1. Abrir Teléfono</p>
+<p>2. Elegir contacto</p>
+<p>3. Presionar llamar</p>
+<button onclick="completar()">Completar misión ✅</button>
+</div>
+
+<div id="m2" class="card" style="display:none;">
+<h3>💬 WhatsApp</h3>
+<p>1. Abrir WhatsApp</p>
+<p>2. Elegir contacto</p>
+<p>3. Escribir mensaje</p>
+<p>4. Enviar</p>
+<button onclick="completar()">Completar misión ✅</button>
+</div>
+
+<div id="m3" class="card" style="display:none;">
+<h3>🎤 Enviar audio</h3>
+<p>1. Abrir chat</p>
+<p>2. Mantener micrófono</p>
+<p>3. Hablar y soltar</p>
+<button onclick="completar()">Completar misión ✅</button>
+</div>
+
+<div id="m4" class="card" style="display:none;">
+<h3>📷 Tomar foto</h3>
+<p>1. Abrir Cámara</p>
+<p>2. Apuntar</p>
+<p>3. Presionar botón blanco</p>
+<button onclick="completar()">Completar misión ✅</button>
+</div>
+
+<div id="m5" class="card" style="display:none;">
+<h3>🔎 Buscar en Google</h3>
+<p>1. Abrir Google</p>
+<p>2. Escribir pregunta</p>
+<p>3. Presionar buscar</p>
+<button onclick="completar()">Completar misión ✅</button>
+</div>
+
+<script>
+let progreso=localStorage.getItem("progreso")||0;
+document.getElementById("barra").style.width=progreso+"%";
+
+function abrir(id){
+let misiones=["m1","m2","m3","m4","m5"];
+misiones.forEach(m=>document.getElementById(m).style.display="none");
+document.getElementById(id).style.display="block";
+}
+
+function completar(){
+progreso=parseInt(progreso);
+if(progreso<100){
+progreso+=20;
+localStorage.setItem("progreso",progreso);
+document.getElementById("barra").style.width=progreso+"%";
+alert("¡Excelente! misión completada 🎉");
+}
+}
+</script>
+
+</body>
+</html>
